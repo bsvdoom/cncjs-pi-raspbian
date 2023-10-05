@@ -481,14 +481,10 @@ esac
 
 # Check Compatability
 if [[ ${SYSTEM_CHECK} == true ]] && [[ ${main_list_entry_selected[*]} =~ "A00" ]] ; then
-	# Get the architecture using uname
-	arch=$(uname -m)
-	
+
 	# Check if the architecture is "armv6l"
 	if [[ "$arch" == "armv6l" ]] && [ $detected_os_id_version == "10" ]; then
-	    echo "The architecture is armv6l."
-	else
-	    echo "The architecture is not armv6l."
+	    echo "The architecture is armv6l (Zero/Zero W)."
 	fi
 
 	if [[ "$detected_os_id" =~ $COMPATIBLE_OS_ID ]] && [[ $detected_os_id_version -ge $ ]]; then
@@ -497,7 +493,7 @@ if [[ ${SYSTEM_CHECK} == true ]] && [[ ${main_list_entry_selected[*]} =~ "A00" ]
 	  	
 	else
 		msg x "Detected OS is NOT compatable with this install script!"
-		msg i "This installer is designed for the [Raspberry Pi](https://www.raspberrypi.org) | ${COMPATIBLE_OS_ID} >= v${}"
+		msg i "This installer is designed for the [Raspberry Pi](https://www.raspberrypi.org) | ${COMPATIBLE_OS_ID} >= v${COMPATIBLE_OS_ID_VERSION}"
 		exit 1;
 	fi
 else
